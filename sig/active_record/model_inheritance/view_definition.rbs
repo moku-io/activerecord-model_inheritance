@@ -1,0 +1,20 @@
+module ActiveRecord
+  module ModelInheritance
+    class ViewDefinition
+      def initialize: (Class model_class, untyped definition) -> void
+
+      def self.define_derived_view: (Class model_class) -> ViewDefinition
+
+      def self.from_model: (Class model_class) -> ViewDefinition
+
+      def self.from_name: (String name) -> ViewDefinition
+
+      attr_reader definition: untyped
+      attr_reader model_class: Class
+
+      def attributes_mapping: -> {base: Array[Symbol], inner: Array[Symbol]}
+
+      def to_sql: -> String
+    end
+  end
+end

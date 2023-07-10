@@ -1,0 +1,13 @@
+class <%= migration_class_name %> < <%= activerecord_migration_class %>
+  def change
+    create_table <%= formatted_inner_table_name %> do |t|
+      # add your derived model extra fields here
+
+      t.references <%= formatted_base_name %>, foreign_key: true
+
+      t.timestamps
+    end
+
+    create_view <%= formatted_table_name %>
+  end
+end

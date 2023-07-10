@@ -5,5 +5,14 @@ require "bundler/setup"
 require "rails/generators"
 require "active_record/model_inheritance"
 
+ModelInheritance = ActiveRecord::ModelInheritance
+
+ModelInheritance.configure do |config|
+  config.models_path = 'tmp/models'
+  config.views_path = 'tmp/db/views'
+  config.migrations_path = 'tmp/db/migrate'
+  config.definitions_path = 'tmp/db/views/model_inheritance'
+end
+
 require "irb"
 IRB.start(__FILE__)

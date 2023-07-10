@@ -1,0 +1,23 @@
+module ActiveRecord
+  module ModelInheritance
+    module Generators
+      class ModelGenerator < Rails::Generators::NamedBase
+        def generate_model: () -> void
+
+        def inject_configuration_to_model: () -> void
+
+        def create_definition_file: () -> void
+
+        def evaluate_template: (String source) -> String
+
+        def rails_application?: () -> bool
+
+        def skip_generate_model?: () -> bool
+
+        def formatted_base_name: () -> String
+
+        def formatted_base_reference: () -> String
+      end
+    end
+  end
+end

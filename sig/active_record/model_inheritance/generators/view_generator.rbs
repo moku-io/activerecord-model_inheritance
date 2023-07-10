@@ -1,0 +1,45 @@
+module ActiveRecord
+  module ModelInheritance
+    module Generators
+      class ViewGenerator < Rails::Generators::NamedBase
+        include Rails::Generators::Migration
+
+        @current_version: Integer
+        @next_version: Integer
+        @view_definition: ViewDefinition
+
+        def create_view_file: () -> void
+
+        def create_migration_file: () -> void
+
+        def self.next_migration_number: (untyped dir) -> untyped
+
+        def current_version: () -> Integer
+
+        def next_version: () -> Integer
+
+        def formatted_next_version: () -> String
+
+        def creating?: () -> bool
+
+        def skip_generate_migration?: () -> bool
+
+        def version_regex: () -> Regexp
+
+        def formatted_class_name: () -> String
+
+        def migration_class_name: () -> String
+
+        def activerecord_migration_class: () -> String
+
+        def formatted_inner_table_name: () -> String
+
+        def formatted_base_name: () -> String
+
+        def formatted_table_name: () -> String
+
+        def view_definition: () -> ViewDefinition
+      end
+    end
+  end
+end

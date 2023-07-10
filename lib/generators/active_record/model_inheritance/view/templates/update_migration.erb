@@ -1,0 +1,5 @@
+class <%= migration_class_name %> < <%= activerecord_migration_class %>
+  def change
+    update_view <%= formatted_table_name %>, version: <%= next_version %>, revert_to_version: <%= current_version %>
+  end
+end
