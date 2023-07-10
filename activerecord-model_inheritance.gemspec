@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.email = ['info@moku.io']
   spec.license = 'MIT'
 
-  spec.summary = 'abcxyz'
-  spec.description = 'abcxyz'
+  spec.summary = 'An attempt at real inheritance for ActiveRecord models.'
+  spec.description = 'An attempt at real inheritance for ActiveRecord models.'
   spec.homepage = 'https://github.com/moku-io/activerecord-model_inheritance'
   spec.required_ruby_version = '>= 3.0.0'
 
