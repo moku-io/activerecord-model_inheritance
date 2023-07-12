@@ -1,6 +1,6 @@
-require 'scenic'
 require 'active_record'
 require 'active_support'
+require 'scenic'
 require_relative 'model_inheritance/version'
 
 module ActiveRecord
