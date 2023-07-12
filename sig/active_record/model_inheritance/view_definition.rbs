@@ -1,7 +1,7 @@
 module ActiveRecord
   module ModelInheritance
     class ViewDefinition
-      def initialize: (Class model_class, untyped definition) -> void
+      def initialize: (Class model_class, Arel::SelectManager definition) -> void
 
       def self.define_derived_view: (Class model_class) -> ViewDefinition
 
@@ -9,7 +9,7 @@ module ActiveRecord
 
       def self.from_name: (String name) -> ViewDefinition
 
-      attr_reader definition: untyped
+      attr_reader definition: Arel::SelectManager
       attr_reader model_class: Class
 
       def attributes_mapping: -> {base: Array[Symbol], inner: Array[Symbol]}
