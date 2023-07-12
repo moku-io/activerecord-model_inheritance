@@ -148,7 +148,7 @@ A view definition is responsible of:
 - providing a convenient way of defining views using Arel
 - keeping a map of which attributes belong respectively to the base and inner model
 
-By default, the derived model will get **all** the fields from base and inner.
+By default, the derived model will get **all** (with [some exceptions](#column-name-conflicts)) the fields from base and inner.
 If that's not what you want, you can override the default behaviour like in the following example:
 ```ruby
 # db/views/model_inheritance/derived_models.rb
@@ -189,6 +189,17 @@ INNER JOIN "base_models"
     ON "derived_model_inners"."model_inheritance_base_id" = "base_models"."id"
 ```
 This is how the database view backing the derived model will be created.
+
+#### Column name conflicts
+The default view definition automatically solves common name conflicts.
+
+Columns not selected by default are:
+- the primary key column from the base model table,
+  if the primary key column name of the base model table is the same in the inner model table
+- timestamp columns from the base model table
+
+You need to provide a custom definition if you want to solve name conflicts yourself,
+for example with [aliases](https://www.rubydoc.info/gems/arel/Arel/AliasPredication).
 
 ### Sharing code between derived and inner
 Sometimes it could be useful to have code replicated in both derived and inner models.

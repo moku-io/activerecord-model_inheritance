@@ -80,18 +80,19 @@ module ActiveRecord
                          end
                        end
                      else
-                       selected_base_columns = if inner_model.primary_key == base_model.primary_key
-                                                 # this is a common naming conflict problem
-                                                 # makes sense to try and solve automatically
-
-                                                 # just delete the base primary key from columns that will be selected
-                                                 base_model
-                                                   .column_names
-                                                   .dup
-                                                   .delete_if { |column_name| column_name == base_model.primary_key }
-                                               else
-                                                 base_model.column_names
-                                               end.map { |column_name| base_table[column_name.to_sym] }
+                       selected_base_columns = base_model
+                                                 .column_names
+                                                 .dup
+                                                 # solve name conflict in case of same primary key column name
+                                                 .delete_if do |column_name|
+                                                   inner_model.primary_key == base_model.primary_key &&
+                                                     column_name == base_model.primary_key
+                                                 end
+                                                 # solve timestamps name conflicts
+                                                 .delete_if do |column_name|
+                                                   [:created_at, :updated_at].include? column_name.to_sym
+                                                 end
+                                                 .map { |column_name| base_table[column_name.to_sym] }
 
                        base_reference = model_class
                                           .reflect_on_association(model_class.model_inheritance_base_name)
