@@ -52,6 +52,7 @@ module ActiveRecord
   end
 end
 
+require_relative 'model_inheritance/base'
 require_relative 'model_inheritance/error'
 require_relative 'model_inheritance/model'
 require_relative 'model_inheritance/view_definition'
