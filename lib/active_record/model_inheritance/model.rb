@@ -92,15 +92,15 @@ module ActiveRecord
         # overriding the following methods to prevent ConnectionAdapter from touching the underlying view
 
         def _insert_record(...)
-          nil
+          0
         end
 
         def _update_record(...)
-          nil
+          0
         end
 
         def _delete_record(...)
-          nil
+          0
         end
       end
 
